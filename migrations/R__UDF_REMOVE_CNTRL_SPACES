@@ -1,0 +1,7 @@
+USE DEMO_DB;
+CREATE OR REPLACE FUNCTION "UDF_REMOVE_CNTRL_SPACES"("COLUMN_NAME" VARCHAR())
+RETURNS VARCHAR()
+LANGUAGE SQL
+AS '
+select NULLIF(regexp_replace(trim(COLUMN_NAME), \'[[:cntrl:]]+|[[:space:]]+\', \' \'), \'\')
+';
