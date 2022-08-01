@@ -3,5 +3,5 @@ CREATE OR REPLACE FUNCTION "UDF_REMOVE_CNTRL_SPACES"("COLUMN_NAME" VARCHAR())
 RETURNS VARCHAR()
 LANGUAGE SQL
 AS '
-select NULLIF(regexp_replace(trim(COLUMN_NAME), \'[[:cntrl:]]+|[[:space:]]+\', \' \'), \'\')
+select NULLIF(regexp_replace(trim(upper(COLUMN_NAME)), \'[[:cntrl:]]+|[[:space:]]+\', \' \'), \'\')
 ';
